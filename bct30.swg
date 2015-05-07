@@ -1,10 +1,12 @@
+%module bct30_swig
+
 using namespace std;
 
 #include <stdio.h>
 #include "bct30.h"
 
-int main(){
-}
+//int main(){
+//}
 
 bct30::bct30(void)
 {

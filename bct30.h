@@ -4,7 +4,7 @@
 #define __BCT30__
 
 #include <iostream>
-#include "mcapi.h"
+//#include "mcapi.h"
 #include "indiapi.h"
 
 //#define Ra 1	// PMC board axis n assigned to <name> servo
@@ -17,13 +17,13 @@ typedef enum  {STOP, NORTH, SOUTH, EAST, WEST} SlewDir;
 
 class bct30 {
 public:
-	
+
 	bct30(void);	// default constructor
 	//~bct30() {}	// destructor
 	~bct30();
 
 	bool manualSlewing;	// we're currently slewing if TRUE
-	
+
 /** setup **/
 	int OpenController(void);
 	int init(void);
@@ -61,32 +61,32 @@ public:
 	bool IsStopped(int AxisNumber);
 	void GetFollowingError(int AxisNumber, double *error);
 	void reportLimitSwitches(void);
-	void getStatus(int AxisNumber, DWORD *stat);
+    void getStatus(int AxisNumber, int *stat);
 	void getMode(int AxisNumber, int *mode);	// 0-vel, 1-position
-   
+
 private:
 
 	double RAtarget_cnt; // for IsAtTarget
 	double DECtarget_cnt;
 	int fuckit;
 
-	HCTRLR hCtlr;	// PMC controller handle
+//	HCTRLR hCtlr;	// PMC controller handle
 	bool ZenithIsSet;	// must = TRUE for setObjectRA/DEC and Slew() to return success
 	double posit;	// raw encoder count
 	SlewDir RaSlewDirection;
 	SlewDir DecSlewDirection;
 	int mode;	// position, velocity mode
-	MCPARAM Param;	// axis parameters
-	MCSCALE MSscale;	// scale motion params to real-world values
-	MCMOTIONEX pMotion;	// motion configuration structure
-	MCFILTEREX pFilter;	// pid filter params
-	WORD pMode;		// digital io channel settings
-	MCJOG pJog;
-	double position;	// axis raw encoder count 
+//	MCPARAM Param;	// axis parameters
+//	MCSCALE MSscale;	// scale motion params to real-world values
+//	MCMOTIONEX pMotion;	// motion configuration structure
+//	MCFILTEREX pFilter;	// pid filter params
+//	WORD pMode;		// digital io channel settings
+//	MCJOG pJog;
+	double position;	// axis raw encoder count
 	double target_position; // target encoder count
 	double distance;	// encoder counts
 	int ret;		// return values
-	MCSTATUSEX        NewStatus;
+//	MCSTATUSEX        NewStatus;
 	int initAxis(int AxisNumber);
 
 
